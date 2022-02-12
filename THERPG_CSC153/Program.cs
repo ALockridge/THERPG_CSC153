@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/**
+
+* 12/12/22
+
+* CSC 153
+
+* Aaingel Lockridge
+
+* The RPG C# Edition
+
+*/
+
 
 namespace THERPG_CSC153
 {
