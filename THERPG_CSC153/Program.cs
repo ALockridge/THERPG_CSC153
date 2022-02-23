@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 /**
 
 * 12/12/22
@@ -18,10 +19,14 @@ using System.Threading.Tasks;
 
 namespace THERPG_CSC153
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
+	class Program
+	{
+		static void Main(string[] args)
+		{
+
+			StreamReader saveRead;
+			StreamWriter saveWrite;
+
 			bool exit = false;
 			int HP = 24;
 			int ATK = 4;
@@ -34,7 +39,7 @@ namespace THERPG_CSC153
 			int[] mobATK = { 2, 12, 18, 30, 16, 6 };
 
 			List<string> mobs = new List<string> { "Blob", "Skeleton", "Thief", "Robot", "Fire Monster", "Water Monster" };
-			
+
 			//POTIONS, TREASURES, WEAPONS, ITEMS
 			string[] potions = { "HPotion", "ATonic" };
 			string[] treasures = { "GOLD", "SILVER", "COPPER" };
@@ -43,6 +48,39 @@ namespace THERPG_CSC153
 
 			int currentRoom = 0;
 			Console.BackgroundColor = ConsoleColor.Black;
+
+
+			Console.WriteLine(" _______ _            _____  _____   _____\n|__   __| |          |  __ \\|  __ \\ / ____|\n   | |  | |__   ___  | |__) | |__) | |  __\n   | |  | '_ \\ / _ \\ |  _  /|  ___/| | |_ |\n   | |  | | | |  __/ | | \\ \\| |    | |__| |\n   |_|  |_| |_|\\___| |_|  \\_\\_|     \\_____|");
+			Console.WriteLine("███████████████████████████████████████████ ");
+			Console.WriteLine("                         |            |");
+			Console.WriteLine("                         |            |");
+			Console.WriteLine("                         |            |");
+			Console.WriteLine("                         |1] NEW GAME |");
+			Console.WriteLine("                         |2] CONTINUE |");
+			Console.WriteLine("                         |3] EXIT     |");
+			Console.WriteLine("                         |/\\/\\/\\/\\/\\/\\|");
+			string saveloaddiag = Console.ReadLine();
+			//save/load
+			if (saveloaddiag == "2")
+			{
+				try
+				{
+					saveRead = File.OpenText("theSave.txt");
+					if(saveRead.EndOfStream == true)
+                    {
+						Console.WriteLine("no savefile, creating one..");
+
+					}
+					saveRead.Close();
+
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("other error");
+				}
+
+			}
+
 			//Main menu
 
 			while (exit == false)
